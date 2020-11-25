@@ -44,11 +44,12 @@ void Escrita(ofstream* Saida, string tipo_arvore, double tempo_processamento, in
         *Saida << "Numero de Copias: " << copias << endl << endl;
 }
 
-void Escrita_parte2(ofstream* Saida, vector<Author*> autor, int m)
+void Escrita_parte2(ofstream* Saida, vector<Author*> autor)
 {
         *Saida << "PARTE 2" << endl;
-        *Saida << "M = " << m << endl;
-        for(int i = 0; i < m; i++)
+        *Saida << "M = " << autor.size() << endl;
+        int tam = autor.size();
+        for(int i = 0; i < autor.size(); i++)
         {
           *Saida << "Nome Autor: " << autor[i]->get_nome()  << " Frequencia: " << autor[i]->get_contador() << endl;
         }
@@ -59,8 +60,10 @@ void Escrita_parte2(ofstream* Saida, vector<Author*> autor, int m)
 int main()
 {
     int N = 0;
-    int M = 703200;
-    int m = 50;
+    ///Tamanho dataset autores
+    int M = 703200; 
+    ///Numero de buscas
+    int m = 50; 
     ifstream entrada;
     ofstream saidaInsercao, saidaBusca, saidaParte2;
     Hash* authors = new Hash(M);
@@ -89,8 +92,8 @@ int main()
             tamanho[i] = std::stoi(n);
 
             Book *lista = new Book[tamanho[i]];
-
             Book *lista2 = new Book[tamanho[i]];
+            
             leitura_dataset(lista, tamanho[i], authors, &autor_ordenado);
 
             igual(lista2, lista, tamanho[i]);
@@ -103,7 +106,7 @@ int main()
             ///PARTE 2
             MergeSortInt(&autor_ordenado[0], 0, tamOrdenado-1);
 
-            Escrita_parte2(&saidaParte2, autor_ordenado, m);
+            Escrita_parte2(&saidaParte2, autor_ordenado);
 
             ///PARTE 3 INSERCAO
             saidaInsercao << endl << "PARTE 3 Insercao" << endl << endl;
@@ -158,6 +161,7 @@ int main()
         }
         saidaInsercao.close();
         saidaBusca.close();
+        saidaParte2.close();
         cout << "Programa finalizado!" << endl;
     }
     else

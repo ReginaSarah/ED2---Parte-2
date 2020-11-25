@@ -18,9 +18,13 @@ ArvoreB::~ArvoreB()
 /// Remove NoB da ArvoreB
 void ArvoreB::remove(NoB* p)
 {
+  if(p == nullptr)
+  {
+    return;
+  }
   if(p->get_folha())
   {
-    p->~NoB();
+    delete p;
   }
   else
   {
@@ -29,7 +33,7 @@ void ArvoreB::remove(NoB* p)
       remove(p->get_filho(i));
       p->set_filho(i,nullptr);
     }
-    p->~NoB();
+    delete p;
   }
 }
 

@@ -78,7 +78,7 @@ void imprimir(Book leitura)
 void leituraAuthor(Hash* autor, int tam)
 {
     ifstream arquivoAuthors;
-    arquivoAuthors.open("authors.csv");
+    arquivoAuthors.open("arquivos/authors.csv");
     int i = 0;
     while(i < tam)
     {
@@ -132,7 +132,7 @@ void imprime_arvore(NoVP *p, int espaco){
 void leitura_dataset(Book* lista, int tamanho, Hash *h, vector<Author*> * autor_ordenado)
 {
   ifstream arquivo;
-  arquivo.open("arquivos/testee.txt");
+  arquivo.open("arquivos/dataset_simp_sem_descricao.txt");
   if(arquivo.is_open())
   {
     string word, trash, line, linha;
@@ -145,7 +145,6 @@ void leitura_dataset(Book* lista, int tamanho, Hash *h, vector<Author*> * autor_
     shuffle(&vet[0], &vet[558880], std::default_random_engine(seed));
     for(int i = 0; i < tamanho; i++)
     {
-      cout << i << endl;
       int a = vet[i];
       int j = 0;
       arquivo.seekg(0);

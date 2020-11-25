@@ -19,6 +19,8 @@ ArvoreVP::~ArvoreVP()
 
 void ArvoreVP::remove(NoVP* p)
 {
+  if(p != nullptr)
+  {
   if(p->get_direito() == nullptr && p->get_esquerdo() == nullptr)
   {
     delete p;
@@ -36,6 +38,7 @@ void ArvoreVP::remove(NoVP* p)
       p->set_direito(nullptr);
     }
     delete p;
+  }
   }
 }
 

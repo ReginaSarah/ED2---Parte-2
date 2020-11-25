@@ -13,7 +13,7 @@ Hash::Hash(int tamanho)
 
 Hash::~Hash()
 {
-
+  
 }
 
 /// Retorna tamanho da Hash
@@ -39,6 +39,7 @@ void Hash::create(Author* Data)
     aux->set_contador(INFINITO);
 
     tabela.push_back(*aux);
+    delete aux;
 }
 
 /// Insere informação na Hash
