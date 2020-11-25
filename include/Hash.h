@@ -16,7 +16,6 @@ class Hash
         ~Hash();
 
         int get_tamanho();
-        //bool Cheia(int m);
 
         void create(Author* Data);
         void insere(Author* data);

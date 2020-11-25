@@ -18,10 +18,11 @@ class ArvoreB
         void remove(NoB* p);
         void insercao(Book* info); 
         NoB* remocao(Book* info);
-        NoB* busca(Book* info, NoB *p);
+        Book* busca(Book* info, NoB *p);
         void cisao(Book* info, NoB* c);
         
         int num_comparacoes = 0;
+        int num_comparacoes_busca = 0;
         int num_copias = 0;
     private:
       NoB* raiz;

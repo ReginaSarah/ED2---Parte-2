@@ -1,0 +1,21 @@
+
+PARTE 3 Insercao
+
+Arvore B (2)
+Tamanho: 50000
+Tempo de Processamento: 0.0689273
+Numero de Comparacoes: 3699956
+Numero de Copias: 102398
+
+Arvore B (20)
+Tamanho: 50000
+Tempo de Processamento: 0.0741391
+Numero de Comparacoes: 4222451
+Numero de Copias: 96164
+
+Arvore Vermelha e Preta
+Tamanho: 50000
+Tempo de Processamento: 0.577821
+Numero de Comparacoes: 839105
+Numero de Copias: 29485
+

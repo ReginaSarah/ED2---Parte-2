@@ -27,8 +27,9 @@ void ArvoreB::remove(NoB* p)
     for(int i = 0; i <= p->get_n(); i++)
     {
       remove(p->get_filho(i));
+      p->set_filho(i,nullptr);
     }
-    p->set_folha(true);
+    p->~NoB();
   }
 }
 
@@ -96,7 +97,7 @@ void ArvoreB::insercao(Book* info)
 void ArvoreB::cisao(Book* info, NoB* d)
 {
   NoB* aux = new NoB(t);
-  //NoB* aux2 = new NoB(t);
+
   aux->set_folha(false);
   aux->set_filho(0, d);
 
@@ -136,28 +137,28 @@ NoB* ArvoreB::remocao(Book *info)
 } 
 
 /// Busca 
-NoB* ArvoreB::busca(Book *info, NoB *p)
+Book* ArvoreB::busca(Book *info, NoB *p)
 {
-  if(raiz == nullptr)
-    return NULL;
-
-  int i = 0;
-
-  while(i < p->get_n() && p->get_chave_i(i)->get_id() < info->get_id())
+  NoB* no;
+  no = raiz->busca(*info, raiz, &num_comparacoes_busca);
+  if(no == nullptr)
   {
-    i++;
+    return nullptr;
   }
-
-  if(p->get_chave_i(i)->get_id() == info->get_id())
+  else
   {
-    return p;
+    int i = 0;
+    while((i < (no->get_n())) && (no->get_chave_i(i)->get_id() < info->get_id()))
+    {
+      i++;
+    }
+    if(i < no->get_n())
+    {
+      if(no->get_chave_i(i)->get_id() == info->get_id())
+      {
+        return no->get_chave_i(i);
+      }
+    }
+    return nullptr;
   }
-
-  if(p->get_folha())
-  {
-    return NULL;
-  }
-
-  return busca(info, p->get_filho(i));
-  
 }

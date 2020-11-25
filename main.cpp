@@ -52,7 +52,6 @@ void Escrita_parte2(ofstream* Saida, vector<Author*> autor, int m)
         {
           *Saida << "Nome Autor: " << autor[i]->get_nome()  << " Frequencia: " << autor[i]->get_contador() << endl;
         }
-        //cout << endl << endl;
 }
 
 
@@ -63,12 +62,14 @@ int main()
     int M = 703200;
     int m = 50;
     ifstream entrada;
-    ofstream saida;
+    ofstream saidaInsercao, saidaBusca, saidaParte2;
     Hash* authors = new Hash(M);
     leituraAuthor(authors, M);
-    //authors->imprime();
+
     entrada.open("arquivos/entrada.txt");
-    saida.open("arquivos/saida.txt");
+    saidaInsercao.open("arquivos/saidaInsercao.txt");
+    saidaBusca.open("arquivos/saidaBusca.txt");
+    saidaParte2.open("arquivos/saidaParte2.txt");
 
     if(entrada.is_open())
     {
@@ -102,37 +103,62 @@ int main()
             ///PARTE 2
             MergeSortInt(&autor_ordenado[0], 0, tamOrdenado-1);
 
-            Escrita_parte2(&saida, autor_ordenado, m);
+            Escrita_parte2(&saidaParte2, autor_ordenado, m);
 
-            ///PARTE 3
-            saida << endl << "PARTE3" << endl << endl;
+            ///PARTE 3 INSERCAO
+            saidaInsercao << endl << "PARTE 3 Insercao" << endl << endl;
             auto start = std::chrono::steady_clock::now();
             insercao_b(lista, &b_2, tamanho[i]);
             auto end = std::chrono::steady_clock::now();
             std::chrono::duration<double> elapsed_seconds = end-start;
 
-            Escrita(&saida, arvore_b_2, elapsed_seconds.count(), b_2.num_comparacoes, b_2.num_copias, tamanho[i]);
+            Escrita(&saidaInsercao, arvore_b_2, elapsed_seconds.count(), b_2.num_comparacoes, b_2.num_copias, tamanho[i]);
           
             start = std::chrono::steady_clock::now();
             insercao_b(lista, &b_10, tamanho[i]);
             end = std::chrono::steady_clock::now();
             std::chrono::duration<double> elapsed_sec = end-start;
 
-            Escrita(&saida, arvore_b_10, elapsed_sec.count(), b_10.num_comparacoes, b_10.num_copias, tamanho[i]);
+            Escrita(&saidaInsercao, arvore_b_10, elapsed_sec.count(), b_10.num_comparacoes, b_10.num_copias, tamanho[i]);
      
             start = std::chrono::steady_clock::now();
             insercao_vp(lista, &vp, tamanho[i]);
             end = std::chrono::steady_clock::now();
             std::chrono::duration<double> elapsed_second = end-start;
 
-            Escrita(&saida, arvore_vp, elapsed_second.count(), vp.num_comparacoes, vp.num_copias, tamanho[i]);
-            
-            
+            Escrita(&saidaInsercao, arvore_vp, elapsed_second.count(), vp.num_comparacoes, vp.num_copias, tamanho[i]);
+            cout << "A insercao nas arvores foi finalizada!" << endl;
+//----------------------------------------------------------
+            ///PARTE 3 BUSCA
+            saidaBusca << endl << "PARTE 3 Busca" << endl << endl;
+            start = std::chrono::steady_clock::now();
+            busca_b(lista,&b_2, 5);
+            end = std::chrono::steady_clock::now();
+            std::chrono::duration<double> elapsed_sec1 = end-start;
+
+            Escrita(&saidaBusca, arvore_b_2, elapsed_sec1.count(), b_2.num_comparacoes_busca, b_2.num_copias, tamanho[i]);
+          
+            start = std::chrono::steady_clock::now();
+            busca_b(lista, &b_10, 5);
+            end = std::chrono::steady_clock::now();
+            std::chrono::duration<double> elapsed_sec2 = end-start;
+
+            Escrita(&saidaBusca, arvore_b_10, elapsed_sec2.count(), b_10.num_comparacoes_busca, b_10.num_copias, tamanho[i]);
+     
+            start = std::chrono::steady_clock::now();
+            busca_vp(lista, &vp, 5);
+            end = std::chrono::steady_clock::now();
+            std::chrono::duration<double> elapsed_sec3 = end-start;
+
+            Escrita(&saidaBusca, arvore_vp, elapsed_sec3.count(), vp.num_comparacoes_busca, vp.num_copias, tamanho[i]);
+
+            cout << "A busca nas arvores foi finalizada!" << endl;
             delete[] lista;
-            delete[] lista2;     
+            delete[] lista2;
         }
-        saida.close();
-        cout << "A insercao nas arvores foi finalizada!" << endl;
+        saidaInsercao.close();
+        saidaBusca.close();
+        cout << "Programa finalizado!" << endl;
     }
     else
     {

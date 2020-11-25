@@ -37,6 +37,7 @@ class NoB
     void juncao(int i);
     void redistribuicao_anterior(int i);
     void redistribuicao_proximo(int i);
+    NoB* busca(Book info, NoB* p, int* num_comparacoes);
     
   private:
     int t;

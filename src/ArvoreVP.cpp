@@ -14,12 +14,6 @@ ArvoreVP::ArvoreVP()
 /// Destrutor ArvoreVP
 ArvoreVP::~ArvoreVP()
 {
-    /*NoVP* aux;
-    while(raiz != nullptr)
-    {
-        aux = remocao(raiz->get_info(), raiz);
-        raiz = aux;
-    }*/
     remove(raiz);
 }
 
@@ -454,6 +448,7 @@ NoVP* ArvoreVP::remocao(Book info, NoVP* p)
 /// Busca informação na arvore
 NoVP* ArvoreVP::busca(Book info, NoVP* p)
 {
+    num_comparacoes_busca++;
     num_comparacoes++;
     if(p == nullptr)
     {

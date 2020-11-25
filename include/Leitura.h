@@ -49,9 +49,9 @@ void separaAutores(string line, Hash *h, vector<Author*> *autor_ordenado)
   for(int i = 0; i < autor.size(); i++)
   {
     Author* aux;
-    //cout << "i: " << i << " - " << autor[i] << " - " << endl;
+
     aux = h->lookup(std::stoi(autor[i]));
-    //cout << "e aqui " << endl;
+
     if(aux != NULL)
     {
       if(aux->get_contador() == 0)
@@ -132,7 +132,7 @@ void imprime_arvore(NoVP *p, int espaco){
 void leitura_dataset(Book* lista, int tamanho, Hash *h, vector<Author*> * autor_ordenado)
 {
   ifstream arquivo;
-  arquivo.open("testee.txt");
+  arquivo.open("arquivos/testee.txt");
   if(arquivo.is_open())
   {
     string word, trash, line, linha;

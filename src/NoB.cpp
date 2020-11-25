@@ -278,7 +278,6 @@ void NoB::remove_nao_folha(int i)
     juncao(i);
     filhos[i]->remove(k);
   }
-  //n--;
 }
 
 /// Seleciona qual procedimento executar: redistribuição ou junção
@@ -355,7 +354,6 @@ void NoB::redistribuicao_anterior(int i)
   
     f->set_n(f->get_n() + 1); 
     irmao->set_n(irmao->get_n() - 1);
-    //return; 
 } 
 
 /// Redistribui no NoB posterior
@@ -390,3 +388,20 @@ void NoB::redistribuicao_proximo(int i)
     irmao->set_n(irmao->get_n() - 1); 
 } 
   
+NoB* NoB::busca(Book info, NoB* p, int* numero_comparacoes)
+{
+    *numero_comparacoes = *numero_comparacoes + 1;
+    int i = 0;
+    while (i < n && info.get_id() > key[i]->get_id())
+    {
+        i++;
+    }
+    if(i < n)
+    {
+      if (key[i]->get_id() == info.get_id())
+          return p;
+    }
+    if (folha == true)
+      return nullptr;
+    return filhos[i]->busca(info, filhos[i], numero_comparacoes);
+}

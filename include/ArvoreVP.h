@@ -21,6 +21,7 @@ class ArvoreVP
         void remove(NoVP* p);
 
         int num_comparacoes = 0;
+        int num_comparacoes_busca = 0;
         int num_copias = 0;
     private:
         NoVP* raiz;
