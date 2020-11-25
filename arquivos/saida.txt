@@ -1,0 +1,21 @@
+
+PARTE3
+
+Arvore B (2)
+Tamanho: 100000
+Tempo de Processamento: 0.152366
+Numero de Comparacoes: 10536572
+Numero de Copias: 206169
+
+Arvore B (20)
+Tamanho: 100000
+Tempo de Processamento: 0.143535
+Numero de Comparacoes: 11413778
+Numero de Copias: 196895
+
+Arvore Vermelha e Preta
+Tamanho: 100000
+Tempo de Processamento: 1.26426
+Numero de Comparacoes: 1870603
+Numero de Copias: 58896
+

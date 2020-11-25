@@ -29,16 +29,6 @@
 
 using namespace std;
 
-#define MENOR -1
-#define IGUAL 0
-#define MAIOR 1
-#define INFINITO -1
-
-//int numComparacoes = 0;
-//int numCopias = 0;
-string quickk = "QuickSort";
-string mergee = "MergeSort";
-
 string arvore_b_2 = "Arvore B (2)";
 string arvore_b_10 = "Arvore B (20)";
 string arvore_vp = "Arvore Vermelha e Preta";
@@ -86,13 +76,14 @@ int main()
         getline(entrada, n);
         N = std::stoi(n);
         int tamanho[N];
-        vector<Author*> autor_ordenado;
-        ArvoreVP vp;
-        ArvoreB b_2(2);
-        ArvoreB b_10(20);
        
         for (int i = 0; i < N; i++)
         {
+            vector<Author*> autor_ordenado;
+            ArvoreVP vp;
+            ArvoreB b_2(2);
+            ArvoreB b_10(20);
+
             getline(entrada, n);
             tamanho[i] = std::stoi(n);
 
@@ -111,7 +102,7 @@ int main()
             ///PARTE 2
             MergeSortInt(&autor_ordenado[0], 0, tamOrdenado-1);
 
-            //Escrita_parte2(&saida, autor_ordenado, m);
+            Escrita_parte2(&saida, autor_ordenado, m);
 
             ///PARTE 3
             saida << endl << "PARTE3" << endl << endl;
@@ -121,14 +112,14 @@ int main()
             std::chrono::duration<double> elapsed_seconds = end-start;
 
             Escrita(&saida, arvore_b_2, elapsed_seconds.count(), b_2.num_comparacoes, b_2.num_copias, tamanho[i]);
-
+          
             start = std::chrono::steady_clock::now();
             insercao_b(lista, &b_10, tamanho[i]);
             end = std::chrono::steady_clock::now();
             std::chrono::duration<double> elapsed_sec = end-start;
 
             Escrita(&saida, arvore_b_10, elapsed_sec.count(), b_10.num_comparacoes, b_10.num_copias, tamanho[i]);
-            
+     
             start = std::chrono::steady_clock::now();
             insercao_vp(lista, &vp, tamanho[i]);
             end = std::chrono::steady_clock::now();
@@ -141,7 +132,7 @@ int main()
             delete[] lista2;     
         }
         saida.close();
-        cout << "A ordenacao foi finalizada!" << endl;
+        cout << "A insercao nas arvores foi finalizada!" << endl;
     }
     else
     {
