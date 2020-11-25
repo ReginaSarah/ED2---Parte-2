@@ -40,7 +40,7 @@ string quickk = "QuickSort";
 string mergee = "MergeSort";
 
 string arvore_b_2 = "Arvore B (2)";
-string arvore_b_10 = "Arvore B (10)";
+string arvore_b_10 = "Arvore B (20)";
 string arvore_vp = "Arvore Vermelha e Preta";
 
 
@@ -71,7 +71,7 @@ int main()
 {
     int N = 0;
     int M = 703200;
-    int m = 1000;
+    int m = 50;
     ifstream entrada;
     ofstream saida;
     Hash* authors = new Hash(M);
@@ -109,9 +109,9 @@ int main()
             int tamOrdenado=autor_ordenado.size();
             
             ///PARTE 2
-            MergeSortInt(autor_ordenado[0], 0, tamOrdenado-1);
+            MergeSortInt(&autor_ordenado[0], 0, tamOrdenado-1);
 
-            Escrita_parte2(&saida, autor_ordenado, m);
+            //Escrita_parte2(&saida, autor_ordenado, m);
 
             ///PARTE 3
             saida << endl << "PARTE3" << endl << endl;
@@ -135,6 +135,7 @@ int main()
             std::chrono::duration<double> elapsed_second = end-start;
 
             Escrita(&saida, arvore_vp, elapsed_second.count(), vp.num_comparacoes, vp.num_copias, tamanho[i]);
+            vp.~ArvoreVP();
             
             
             delete[] lista;

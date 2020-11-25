@@ -34,11 +34,14 @@ void ArvoreVP::remove(NoVP* p)
     if(p->get_esquerdo() != nullptr)
     {
       remove(p->get_esquerdo());
+      p->set_esquerdo(nullptr);
     }
     if(p->get_direito() != nullptr)
     {
       remove(p->get_direito());
+      p->set_direito(nullptr);
     }
+    delete p;
   }
 }
 

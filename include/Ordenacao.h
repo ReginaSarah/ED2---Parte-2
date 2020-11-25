@@ -264,7 +264,7 @@ void MergeSort(Book *Livro, int primeiro, int ultimo)
 }
 
 ///Auxiliar MergeSort para inteiro
-void MergeTripleSortInt(Author* autor_ordenado, int primeiro, int meio, int ultimo)
+void MergeTripleSortInt(Author** autor_ordenado, int primeiro, int meio, int ultimo)
 {
     int x, y, z;
     int a = meio - primeiro +1;
@@ -273,11 +273,11 @@ void MergeTripleSortInt(Author* autor_ordenado, int primeiro, int meio, int ulti
     Author *Segundo  = new Author[b];
     for(int x = 0; x < a; x++)
     {
-        Primeiro[x] = autor_ordenado[primeiro+x];
+        Primeiro[x] = *autor_ordenado[primeiro+x];
     }
     for(int y = 0; y < b; y++)
     {
-        Segundo[y] = autor_ordenado[meio+1+y];
+        Segundo[y] = *autor_ordenado[meio+1+y];
     }
 
     x = 0;
@@ -288,13 +288,13 @@ void MergeTripleSortInt(Author* autor_ordenado, int primeiro, int meio, int ulti
     {
         if(Primeiro[x].get_contador() >= Segundo[y].get_contador())
         {
-            autor_ordenado[z] = Primeiro[x];
+            *autor_ordenado[z] = Primeiro[x];
             x++;
             numCopias++;
         }
         else
         {
-            autor_ordenado[z] = Segundo[y];
+            *autor_ordenado[z] = Segundo[y];
             y++;
             numCopias++;
         }
@@ -302,14 +302,14 @@ void MergeTripleSortInt(Author* autor_ordenado, int primeiro, int meio, int ulti
     }
     while(x < a)
     {
-        autor_ordenado[z] = Primeiro[x];
+        *autor_ordenado[z] = Primeiro[x];
         x++;
         z++;
         numCopias++;
     }
     while(y < b)
     {
-        autor_ordenado[z] = Segundo[y];
+        *autor_ordenado[z] = Segundo[y];
         y++;
         z++;
         numCopias++;
@@ -320,7 +320,7 @@ void MergeTripleSortInt(Author* autor_ordenado, int primeiro, int meio, int ulti
 }
 
 ///Metodo MergeSort para inteiro
-void MergeSortInt(Author *autor_ordenado, int primeiro, int ultimo)
+void MergeSortInt(Author **autor_ordenado, int primeiro, int ultimo)
 {
     int media;
     if(primeiro < ultimo)
