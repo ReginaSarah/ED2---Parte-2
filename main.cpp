@@ -135,7 +135,6 @@ int main()
             std::chrono::duration<double> elapsed_second = end-start;
 
             Escrita(&saida, arvore_vp, elapsed_second.count(), vp.num_comparacoes, vp.num_copias, tamanho[i]);
-            vp.~ArvoreVP();
             
             
             delete[] lista;
