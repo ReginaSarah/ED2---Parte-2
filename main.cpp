@@ -33,7 +33,7 @@ string arvore_b_2 = "Arvore B (2)";
 string arvore_b_10 = "Arvore B (20)";
 string arvore_vp = "Arvore Vermelha e Preta";
 
-
+///clone
 ///Escrita no arquivo de saida
 void Escrita(ofstream* Saida, string tipo_arvore, double tempo_processamento, int comparacoes, int copias, int tamanho)
 {
